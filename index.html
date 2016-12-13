@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JsonpUp.js -- WebFE前端网javascript跨域请求解决方案</title>
+<meta charset="utf-8"/>
+<link rel="shortcut icon" href="favicon.ico?v=2"/>
+<meta name="viewport" content="width=device-width"/>
+<link rel="stylesheet" type="text/css" href="public.css"/>
+</head>
+<body>
+<div id="top">
+	<div id="logo"><img src="json.png"/></div>
+	<h3>JsonpUp</h3>
+	<p>提供javascript跨域请求方案</p>
+	<p><input class="button" type="button" value="下载JsonUp.js"/></p>
+	<i>v1.1.0 beta</i>
+</div>
+<div class="container">
+	<h2 class="title">JsonpUp.js能做什么？</h2>
+	<div class="content">
+		<p>众所周知，由于浏览器的同源策略，js是不允许跨域ajax请求的，但浏览器却对<code>&lt;script&gt;</code>标签的<code>src</code>不做检查，并且允许任意的域中的文件被加载，于是<code>JSONP(JSON with Padding)</code>成为了跨域请求的解决方案，但是需要服务器端的配合，由此，<code>JsonpUp.js</code>诞生！她可以让前端er们更专注、更自由！</p>
+		<p>Tip:确切的说，jsonp并不属于ajax（XHR），而是Scripts文档加载！</p>
+		<p><img src="demo.png"/></p>
+	</div>
+	<h2 class="title">使用方法</h2>
+	<div class="content">
+		<p class="subtitle">1、引入<code>JsonUp.js</code>文件<i>（依赖Jquery.js）</i></p>
+		<div class="code">&lt;script type=<i>"text/javascript"</i> src=<i>"http://www.webfe.net/jsonup-1.1.0.min.js"</i>&gt;&lt;/script&gt;</div>
+		<p class="subtitle">2、使用方法示例</p>
+		<div class="code">
+			<span class="comments">
+			/**<br/>
+			 * @param url : 请求url全路径<br/>
+			 * @param code : 编码<br/>
+			 * @param callback ： 回调函数<br/>
+			 */<br/>
+			</span>
+			JsonpUp.load('<i>http://www.domain.com/action</i>', 'utf8', function(result) {<br/>
+				　　　<span class="comments">//do something</span><br/>
+			});
+		</div>
+	</div>
+	<h2 class="title">示例演示</h2>
+	<div class="content">　　
+		<input id="url" type="text" value="http://www.xxx.com/user/userinfo?id=26"/> <input id="test" class="button" type="button" value="JsonUp一下"/>
+		<p id="html"></p>
+	</div>
+	<h2 class="title">留言反馈</h2>
+	<div class="content">
+		<!-- 多说评论框 start -->
+		<div class="ds-thread" data-thread-key="jsonup" data-title="JsonpUp.js -- WebFE前端网javascript跨域请求解决方案" data-url="http://www.webfe.net/t/jsonup/jsonup/"></div>
+		<!-- 多说评论框 end -->
+		<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+		<script type="text/javascript">
+		var duoshuoQuery = {short_name:"webfe"};
+			(function() {
+				var ds = document.createElement('script');
+				ds.type = 'text/javascript';ds.async = true;
+				ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+				ds.charset = 'UTF-8';
+				(document.getElementsByTagName('head')[0] 
+				 || document.getElementsByTagName('body')[0]).appendChild(ds);
+			})();
+		</script>
+		<!-- 多说公共JS代码 end -->
+	</div>
+	<h2 class="title">License</h2>
+	<div class="content">
+		<p>Licensed under the MIT License.</p>
+	</div>
+	<div class="copyright">
+		<h3>JsonpUp</h3>
+		<p>by <b>Zhang Shuzheng</b></p>
+		<p>QQ群:305155242</p>
+		<p>Copyright © 2015 WebFE.net(Web前端网) All Rights Reserved.</p>
+	</div>
+</div>
+<div id="totop"><a id="totop_a" href="javascript:;"></a></div>
+<script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="jsonpup.js"></script>
+<script type="text/javascript">
+$(function() {
+	$('#test').click(function() {
+		$('#html').html('加载中...');
+		JsonpUp.load($('#url').val(), 'utf8', function(result) {
+			$('#html').html(result);
+		});
+	});
+	$('#totop_a').click(function() {
+		$('html body').animate({scrollTop : 0}, 200);
+	});
+});
+$(window).bind('scroll',function(){
+	$(this).scrollTop()>0?$('#totop').fadeIn(100):$('#totop').fadeOut(100);
+});
+</script>
+</body>
+</html>
